@@ -25,22 +25,13 @@ chmod +x ./verify-env.sh && ./verify-env.sh
 ---
 
 ## Step 3: Run a Live Diagnostic Prompt
-Now, let's run a real-world network analysis prompt from the evaluation suite. 
+Now, let's run a real-world network analysis prompt. The agent will use your credentials to run `gcloud` commands and Network Management Connectivity Tests against the project you set in Step 2.
 
-Since you are an internal user, you have access to the playground projects. The agent will use your credentials to run `gcloud` commands and query BigQuery.
-
-### Prompt 1: VPC Flow Logs Top Talker
-Ask the agent to identify the VM sending the most traffic in `cn-fe-playground`:
+### Prompt: Pairwise VM Connectivity Matrix
+Ask the agent to list up to 3 VMs in your project and run a connectivity test between every pair:
 
 ```sh
-gemini "In project 'cn-fe-playground', find the VM that has sent the most traffic in the last hour. Then, show me its top 5 destination IPs by byte count."
-```
-
-### Prompt 2: Firewall Activity & Denies
-Ask the agent to audit blocked traffic in `firewall-logging-prober3`:
-
-```sh
-gemini "Show me the top 3 most active firewall rules in project 'firewall-logging-prober3' for the last hour. If any traffic is denied, tell me which rules are responsible and which IPs are blocked."
+gemini "List up to 3 VMs in my default project. Then run a Network Management connectivity test between every ordered pair of those VMs (skip self-pairs). Present the results as a nicely formatted table with the columns: Source, Destination, Connection Status, and Reason (leave blank if reachable; otherwise explain why it failed)."
 ```
 
 ---
