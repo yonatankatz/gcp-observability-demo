@@ -410,23 +410,7 @@
           <h2>Open the tutorial in <em>your</em> Cloud Shell.</h2>
           <p class="sub">// authentication handled by Google</p>
 
-          <div class="field">
-            <label for="project">GCP Project ID <span class="req">*</span></label>
-            <div class="input-wrap">              
-              <input
-                id="project"
-                type="text"
-                autocomplete="off"
-                spellcheck="false"                
-                aria-describedby="hint" />
-            </div>
-            <div class="hint" id="hint">
-              <span>lowercase letters, digits, hyphens · 6–30 chars</span>
-              <span class="ok" id="ok">✓ ready</span>
-            </div>
-          </div>
-
-          <a id="launch" class="btn" aria-disabled="true" href="#" rel="noopener" target="_blank">
+          <a id="launch" class="btn" href="https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/yonatankatz/gcp-observability-demo&cloudshell_tutorial=tutorial.md&show=terminal" rel="noopener" target="_blank">
             <span>Launch Tutorial</span>
             <span class="arrow">⟶</span>
           </a>
@@ -447,51 +431,14 @@
 
 <script>
   (function(){
-    const input  = document.getElementById('project');
-    const btn    = document.getElementById('launch');
-    const ok     = document.getElementById('ok');
-
-    const buildUrl = (projectId) => {
-      const id = encodeURIComponent(projectId);
-      return `https://ssh.cloud.google.com/cloudshell/editor`
-           + `?cloudshell_git_repo=https://github.com/yonatankatz/gcp-observability-demo`
-           + `&cloudshell_tutorial=tutorial.md`
-           + `&cloudshell_project=${id}`
-           + `&show=terminal`;
-    };
-
-    const sync = () => {
-      const v = input.value.trim();
-      if (v.length > 0) {
-        btn.setAttribute('aria-disabled', 'false');
-        btn.setAttribute('href', buildUrl(v));
-        ok.classList.add('on');
-      } else {
-        btn.setAttribute('aria-disabled', 'true');
-        btn.setAttribute('href', '#');
-        ok.classList.remove('on');
-      }
-    };
-
-    input.addEventListener('input', sync);
+    const btn = document.getElementById('launch');
 
     // Enter to launch
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && btn.getAttribute('aria-disabled') === 'false') {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
         window.open(btn.getAttribute('href'), '_blank', 'noopener');
       }
     });
-
-    // Block disabled clicks
-    btn.addEventListener('click', (e) => {
-      if (btn.getAttribute('aria-disabled') === 'true') {
-        e.preventDefault();
-        input.focus();
-      }
-    });
-
-    // Autofocus the input on load
-    window.addEventListener('load', () => setTimeout(() => input.focus(), 300));
   })();
 </script>
 </body>

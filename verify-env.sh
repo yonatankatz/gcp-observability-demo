@@ -7,17 +7,22 @@ NC='\033[0m' # No Color
 
 echo "Checking environment..."
 
-# 1. Check GEMINI_API_KEY
-# if [ -z "$GEMINI_API_KEY" ]; then
-#     echo -e "${RED}❌ Error: GEMINI_API_KEY is not set.${NC}"
-#     echo "---------------------------------------------------------"
-#     echo "To use Gemini CLI, you need an API Key."
-#     echo "1. Get a key from: https://aistudio.google.com/app/apikey"
-#     echo "2. Run: export GEMINI_API_KEY='your-key-here'"
-#     echo "---------------------------------------------------------"
-#     exit 1
-# fi
-# echo -e "${GREEN}✅ GEMINI_API_KEY is set.${NC}"
+# 1. Prompt for GCP Project ID and set as default (retry until success)
+while true; do
+    read -r -p "Enter your GCP Project ID: " PROJECT_ID
+    if [ -z "$PROJECT_ID" ]; then
+        echo -e "${RED}❌ Project ID cannot be empty. Please try again.${NC}"
+        continue
+    fi
+
+    echo "Setting default project to '${PROJECT_ID}'..."
+    if gcloud config set project "$PROJECT_ID"; then
+        echo -e "${GREEN}✅ Default project set to ${PROJECT_ID}.${NC}"
+        break
+    else
+        echo -e "${RED}❌ Failed to set project '${PROJECT_ID}'. Please try again.${NC}"
+    fi
+done
 
 # 2. Install Gemini CLI
 if ! command -v gemini &> /dev/null; then
