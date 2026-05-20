@@ -4,22 +4,7 @@ This private repository hosts the interactive Cloud Shell tutorial for the **Goo
 
 ## Launch the Tutorial
 
-<p>Enter your Google Cloud Project ID below to generate your custom Cloud Shell link:</p>
+To launch this tutorial in your own environment, replace `<YOUR_PROJECT_ID>` in the URL below with your actual Google Cloud Project ID, and paste it into your browser:
 
-<input type="text" id="projectId" placeholder="Enter Project ID..." style="padding: 5px; width: 250px;">
-<button onclick="launchCloudShell()" style="padding: 6px 12px; cursor: pointer;">Open in Cloud Shell</button>
-
-<script>
-function launchCloudShell() {
-    const projectId = document.getElementById('projectId').value.trim();
-    if (!projectId) {
-        alert("Please enter a Project ID first.");
-        return;
-    }
-    const baseUrl = "https://ssh.cloud.google.com/cloudshell/editor";
-    const repoUrl = encodeURIComponent(`https://source.developers.google.com/p/${projectId}/r/skills-tutorial`);
-    const finalUrl = `${baseUrl}?cloudshell_git_repo=${repoUrl}&cloudshell_tutorial=tutorial.md&show=terminal`;
-    
-    window.open(finalUrl, '_blank');
-}
-</script>
+```text
+[https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://source.developers.google.com/p/](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://source.developers.google.com/p/)<YOUR_PROJECT_ID>/r/skills-tutorial&cloudshell_tutorial=tutorial.md&show=terminal
