@@ -388,17 +388,7 @@
 
     <!-- TOP BAR -->
     <header class="topbar reveal r1">
-      <div class="brand">
-        <span class="dot"></span>
-        <span>Cloud&nbsp;Skills&nbsp;/&nbsp;Lab&nbsp;Console</span>
-      </div>
-      <div class="crumbs">
-        <span>module</span> &nbsp;›&nbsp; <b>Networking Observability</b> &nbsp;›&nbsp; <span>launch</span>
-      </div>
-      <div class="status">
-        <span class="pulse"></span>
-        <span>Cloud Shell · ready</span>
-      </div>
+    
     </header>
 
     <!-- MAIN -->
@@ -406,45 +396,28 @@
 
       <!-- LEFT: editorial -->
       <section class="left">
-        <div class="eyebrow reveal r2">Tutorial · 001 · Interactive Lab</div>
         <h1 class="reveal r3">
           Networking<br/>
           <span class="italic">Observability,</span><br/>
           <span class="accent">unwrapped.</span>
         </h1>
-        <p class="lede reveal r4">
-          A guided, hands-on walk-through of <em>Google Cloud's networking telemetry stack</em> — opened
-          straight into your own Cloud Shell editor. Enter your project ID to spin up the lab.
-        </p>
-        <div class="meta reveal r5">
-          <div><span>Environment</span><b>Cloud Shell</b></div>
-          <div><span>Source</span><b>Private Repo</b></div>
-          <div><span>Duration</span><b>~ 45 min</b></div>
-          <div><span>Track</span><b>Networking</b></div>
-        </div>
         <div class="sidemark"></div>
       </section>
 
       <!-- RIGHT: launcher -->
       <section class="right">
         <div class="card reveal r3">
-          <div class="card-head">
-            <span class="id">REQ&nbsp;//&nbsp;LAUNCH-01</span>
-            <span><b>step</b> 01 / 01</span>
-          </div>
           <h2>Open the tutorial in <em>your</em> Cloud Shell.</h2>
           <p class="sub">// authentication handled by Google</p>
 
           <div class="field">
             <label for="project">GCP Project ID <span class="req">*</span></label>
-            <div class="input-wrap">
-              <span class="prefix">gcp://</span>
+            <div class="input-wrap">              
               <input
                 id="project"
                 type="text"
                 autocomplete="off"
-                spellcheck="false"
-                placeholder="my-observability-project"
+                spellcheck="false"                
                 aria-describedby="hint" />
             </div>
             <div class="hint" id="hint">
@@ -481,8 +454,9 @@
     const buildUrl = (projectId) => {
       const id = encodeURIComponent(projectId);
       return `https://ssh.cloud.google.com/cloudshell/editor`
-           + `?cloudshell_git_repo=https://source.developers.google.com/p/${id}/r/skills-tutorial`
+           + `?cloudshell_git_repo=https://github.com/yonatankatz/gcp-observability-demo`
            + `&cloudshell_tutorial=tutorial.md`
+           + `&cloudshell_project=${id}`
            + `&show=terminal`;
     };
 

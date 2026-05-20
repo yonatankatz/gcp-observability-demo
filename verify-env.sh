@@ -8,16 +8,16 @@ NC='\033[0m' # No Color
 echo "Checking environment..."
 
 # 1. Check GEMINI_API_KEY
-if [ -z "$GEMINI_API_KEY" ]; then
-    echo -e "${RED}❌ Error: GEMINI_API_KEY is not set.${NC}"
-    echo "---------------------------------------------------------"
-    echo "To use Gemini CLI, you need an API Key."
-    echo "1. Get a key from: https://aistudio.google.com/app/apikey"
-    echo "2. Run: export GEMINI_API_KEY='your-key-here'"
-    echo "---------------------------------------------------------"
-    exit 1
-fi
-echo -e "${GREEN}✅ GEMINI_API_KEY is set.${NC}"
+# if [ -z "$GEMINI_API_KEY" ]; then
+#     echo -e "${RED}❌ Error: GEMINI_API_KEY is not set.${NC}"
+#     echo "---------------------------------------------------------"
+#     echo "To use Gemini CLI, you need an API Key."
+#     echo "1. Get a key from: https://aistudio.google.com/app/apikey"
+#     echo "2. Run: export GEMINI_API_KEY='your-key-here'"
+#     echo "---------------------------------------------------------"
+#     exit 1
+# fi
+# echo -e "${GREEN}✅ GEMINI_API_KEY is set.${NC}"
 
 # 2. Install Gemini CLI
 if ! command -v gemini &> /dev/null; then

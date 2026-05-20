@@ -19,7 +19,7 @@ In this walkthrough, you will install the CLI, link this skill, and run live pro
 Run the following script to verify your environment, install Gemini CLI, link the Networking skill, and enable auto-approval policies for a seamless experience:
 
 ```sh
-./verify-env.sh
+chmod +x ./verify-env.sh && ./verify-env.sh
 ```
 
 ---
