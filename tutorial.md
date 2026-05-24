@@ -31,7 +31,7 @@ Now, let's run a real-world network analysis prompt. The agent will use your cre
 Ask the agent to list up to 3 VMs in your project and run a connectivity test between every pair:
 
 ```sh
-gemini "List up to 3 VMs in my default project. Then run a Network Management connectivity test between every ordered pair of those VMs (skip self-pairs). Present the results as a nicely formatted table with the columns: Source, Destination, Connection Status, and Reason (leave blank if reachable; otherwise explain why it failed)."
+gemini "List up to 3 VMs in my current default project, and only in this project. Then run a Network Management connectivity test between every ordered pair of those VMs (skip self-pairs). Present the results as a nicely formatted table with the columns: Source, Destination, Connection Status, and Reason (leave blank if reachable; otherwise explain why it failed)."
 ```
 
 ---
